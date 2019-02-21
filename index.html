@@ -5,6 +5,22 @@
 	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 	<meta name="viewport" content="width=device-width">
 	<title>Scan Tongue</title>
+	<script type="text/javascript">
+		let simpleAlert = function () {
+			let xhr = new XMLHttpRequest;
+
+			xhr.open('GET', 'https://yvone.github.io/DAW/some-numbers.json');
+			xhr.onload = function() {
+				let nums = JSON.parse(this.response);
+				let pares = nums.filter(n=> n%2==0);
+				let suma = nums.reduce((a, b)=> a+b);
+				let mult = nums.map(n => n*10);
+				alert(`original: ${nums.join(', ')},\n pares: ${pares.join(', ')},\nsuma: ${suma},\nmult: ${mult.join(', ')}`);
+			}
+
+			xhr.send();
+		}
+	</script>
 </head>
 <body>
 	<div>
@@ -29,7 +45,7 @@
 				<h1>3. </h1>
 				<img src="assets/imgC.png">
 			</div>
-			<button class="btn">
+			<button class="btn" onclick="simpleAlert()">
 				<img src="assets/scan_gray_icon.png" class="btn-logo">
 				Begin
 			</button>
